@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 const rp = require('request-promise');
 const md5 = require('md5');
-const helperFunctions = require('../helper/helper');
+const { currentTime } = require('../helper/helper');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const method = 'CreateSession';
-  const timeStamp = helperFunctions.currentTime();
-  const signature = md5(`${process.env.DEV_ID}${method}${process.env.AUTH_KEY}${timeStamp}`);
+  const timeStamp = currentTime();
+  const devId = process.env.DEV_ID;
+  const authKey = process.env.AUTH_KEY;
+  console.log(currentTime());
+  const signature = md5(`${devId}${method}${authKey}${timeStamp}`);
+  console.log(process.env.AUTH_KEY);
   const url =  `http://api.realmroyale.com/realmapi.svc/${method}JSON/${process.env.DEV_ID}/${signature}/${timeStamp}`;
   
   rp(url)
