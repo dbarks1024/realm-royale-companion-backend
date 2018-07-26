@@ -5,8 +5,8 @@ const md5 = require('md5');
 const { currentTime } = require('../helper/helper');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  const method = 'CreateSession';
+router.get('/', function(req, res) {
+  const method = 'createsession';
   const timeStamp = currentTime();
   const devId = process.env.DEV_ID;
   const authKey = process.env.AUTH_KEY;
