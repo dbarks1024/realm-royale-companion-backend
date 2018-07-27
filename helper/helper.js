@@ -27,13 +27,14 @@ const createSession = () => {
   });
 };
 
-const getLeaderboard = (sessionId, queueId, rankingCriteria) => {
+const getLeaderboard = (queueId, rankingCriteria) => {
   const method = 'getleaderboard';
 
-  const url = `http://api.realmroyale.com/realmapi.svc/${method}JSON/${process.env.DEV_ID}/${createSignature(method)}/${sessionId}/${currentTime()}/${queueId}/${rankingCriteria}`;
-
   return new Promise((resolve, reject) => {
-    rp(url)
+    createSession()
+    .then((session) => {
+      const url = `http://api.realmroyale.com/realmapi.svc/${method}JSON/${process.env.DEV_ID}/${createSignature(method)}/${session.session_id}/${currentTime()}/${queueId}/${rankingCriteria}`;
+      rp(url)
       .then((response) => {
         resolve(JSON.parse(response));
       })
@@ -41,11 +42,30 @@ const getLeaderboard = (sessionId, queueId, rankingCriteria) => {
         console.log(error);
         reject(error);
       });
+    });
   });
 };
 
-const searchPlayers = () => {
-
+const searchPlayers = (playerId) => {
+  const method = 'searchplayers';
+  
+  return new Promise((resolve, reject) => {
+    createSession()
+    .then((session) => {
+      const url = `http://api.realmroyale.com/realmapi.svc/${method}JSON/${process.env.DEV_ID}/${createSignature(method)}/${session.session_id}/${currentTime()}/${playerId}`;
+      rp(url)
+        .then((response) => {
+          resolve(JSON.parse(response));
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    })
+    .catch((error) =>{
+      console.log(error);
+    });
+  });
 };
 
 const getPlayer = () => {
@@ -73,8 +93,13 @@ const getMatchDetails = () => {
 };
 
 module.exports = {
-  currentTime,
-  createSignature,
   createSession,
-  getLeaderboard
+  getLeaderboard,
+  searchPlayers,
+  getPlayer,
+  getPlayerStats,
+  getPlayerMatchHistory,
+  getPlayerStatus,
+  getMatchIdsByQueue,
+  getMatchDetails,
 };
