@@ -15,3 +15,8 @@ To start you need to:
 ## Start Server
 Start the server with "npm test"
 
+##Resources
+* API wrapper for other games - https://github.com/messyfresh/hirez.js
+* Podio community - https://podio.com/hirezstudioscom/smite-api-developer-collaboration
+* Realm Royale API proposal - https://github.com/apugh/realm-api-proposal/wiki
+* All API Dev Docs
