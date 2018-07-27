@@ -29,18 +29,7 @@ const createSession = () => {
 
 const getLeaderboard = (sessionId, queueId, rankingCriteria) => {
   const method = 'getleaderboard';
-// queueId = 474; 
-// ID	Name	In-game name
-// 474	Solo	LIVE Solo
-// 475	Duo	LIVE Duo
-// 476	Quad	LIVE Quad
 
-// rankingCriteria 
-// ID	Description
-// 1	Team Wins
-// 2	Team Average Placement (shown below)
-// 3	Individual Average Kills
-// 4	Winrate
   const url = `http://api.realmroyale.com/realmapi.svc/${method}JSON/${process.env.DEV_ID}/${createSignature(method)}/${sessionId}/${currentTime()}/${queueId}/${rankingCriteria}`;
 
   return new Promise((resolve, reject) => {
@@ -55,6 +44,33 @@ const getLeaderboard = (sessionId, queueId, rankingCriteria) => {
   });
 };
 
+const searchPlayers = () => {
+
+};
+
+const getPlayer = () => {
+
+};
+
+const getPlayerStats = () => {
+
+};
+
+const getPlayerMatchHistory = () => {
+
+};
+
+const getPlayerStatus = () => {
+
+};
+
+const getMatchIdsByQueue = () => {
+
+};
+
+const getMatchDetails = () => {
+
+};
 
 module.exports = {
   currentTime,
