@@ -22,7 +22,7 @@ router.get('/', function (req, res) {
 router.post('/leaderboard', function (req, res) {
   getLeaderboard(req.body.queueId, req.body.rankingCriteria)
     .then((leaderboards) => {
-      res.json(leaderboards);
+      res.json(leaderboards.leaderboard_details);
     });
 });
 
