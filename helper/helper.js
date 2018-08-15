@@ -44,7 +44,6 @@ const createSession = () => {
 
 const getLeaderboard = (queueId, rankingCriteria) => {
   const method = 'getleaderboard';
-
   return new Promise((resolve, reject) => {
     createSession()
       .then((session) => {

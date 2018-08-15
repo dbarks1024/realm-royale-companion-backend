@@ -9,12 +9,9 @@ const {
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  createSession()
-    .then((response) => {
-      getLeaderboard(response.session_id)
-        .then((leaderboard) => {
-          res.json(leaderboard);
-        });
+  getLeaderboard(474, 4)
+    .then((leaderboards) => {
+      res.json(leaderboards.leaderboard_details);
     });
 });
 
