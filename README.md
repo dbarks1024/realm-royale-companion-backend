@@ -11,11 +11,12 @@ To start you need to:
 1. clone the the repo to your computer 
 2. Run "npm install"
 3. Add .env file to root of project
+4. Setup Redis for your computer
 
 ## Start Server
 Start the server with "npm test"
 
-##Resources
+## Resources
 * API wrapper for other games - https://github.com/messyfresh/hirez.js
 * Podio community - https://podio.com/hirezstudioscom/smite-api-developer-collaboration
 * Realm Royale API 
